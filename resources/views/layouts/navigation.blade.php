@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="hover:bg-red-400 px-6">
-                <a href="#" class="w-full flex">
+                <a href="{{ route('show.produk') }}" class="w-full flex">
                     <img src="{{ asset('images/Package.png') }}" alt="package" width="20"
                         class="max-w-15 my-auto mr-3">
                     Produk

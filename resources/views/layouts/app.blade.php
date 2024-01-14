@@ -16,9 +16,23 @@
 
     <!-- Datatables -->
     <link rel="stylesheet" href="{{ asset('plugins/DataTables/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/datatables.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
+    <!-- button data table -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js">
+    </script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js">
+    </script>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
 </head>
 
 <body class="font-sans antialiased">
@@ -32,10 +46,6 @@
         </main>
     </div>
 </body>
-@push('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
-@endpush
 
 </html>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/kategori', [KategoriController::class, 'index'])->name('show.kategori');
     Route::post('/kategori', [KategoriController::class, 'store'])->name('add.kategori');
     Route::get('/listKategori', [KategoriController::class, 'dataTableKategori'])->name('list.kategori');
+
+    // product
+    Route::get('/produk', [ProdukController::class, 'index'])->name('show.produk');
+    Route::get('/addproduk', [ProdukController::class, 'create'])->name('add.produk');
+    Route::post('/storeproduk', [ProdukController::class, 'store'])->name('store.produk');
+    Route::get('/listProduk', [ProdukController::class, 'dataTableProduk'])->name('list.produk');
+    Route::get('/deleteProduk/{id}', [ProdukController::class, 'destroy'])->name('delete.produk');
+    Route::get('/update/{id}', [ProdukController::class, 'update'])->name('update.produk');
+    Route::post('/editProduk', [ProdukController::class, 'edit'])->name('edit.produk');
 });
 
 require __DIR__ . '/auth.php';

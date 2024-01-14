@@ -21,10 +21,8 @@ class KategoriController extends Controller
         // if ($request->ajax()) {
         $data = Kategori::all();
         $datatables = DataTables::of($data)
-            // ->addIndexColumn()
-            ->addColumn('no', function ($data) {
-                return $data->id;
-            })
+            ->addIndexColumn()
+
             ->addColumn('name', function ($data) {
                 return $data->name;
             })
@@ -35,7 +33,12 @@ class KategoriController extends Controller
                 return $data->updated_at;
             })
             ->addColumn('aksi', function ($data) {
-                return "<a href='#'>update" . $data->id . "</a>";
+                return "
+                <div class='flex flex-row'>
+                    <a href='#' class='mx-8'><img src='" .  asset('images/edit.png')  . "' alt='edit' width='15' heigth='15'> </a>
+                    <a href='#' class='mx-8'><img src='" .  asset('images/delete.png')  . "' alt='delete' width='15' heigth='15'></a>
+                </div>
+                ";
             })->rawColumns(['aksi']);
 
         return $datatables->make(true);

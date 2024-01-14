@@ -24,7 +24,7 @@
         </div>
     @endif
 
-    {{-- <div class="px-4 py-5 mx-3 max-w-screen bg-white rounded">
+    <div class="px-4 py-5 mx-3 max-w-screen bg-white rounded">
         <label class="text-lg">Form input kategori</label>
         <form action="{{ route('add.kategori') }}" method="post">
             @csrf
@@ -34,32 +34,25 @@
                 <button type="submit" class="w-24 bg-red-500 rounded text-white ml-2">Tambah</button>
             </div>
         </form>
-    </div> --}}
+    </div>
 
     <div class="mt-3 mx-3 px-4 py-5 w-max-screen bg-white rounded">
-        <table class="table-auto w-full border border-slate-400" id="tableKategori">
+        <table class="display" style="width:100%" id="tableKategori">
             <thead>
                 <tr>
-                    <th class="border border-slate-300">No</th>
-                    <th class="border border-slate-300">Name</th>
-                    <th class="border border-slate-300">Create at</th>
-                    <th class="border border-slate-300">Update at</th>
-                    <th class="border border-slate-300">Aksi</th>
+                    <th class="px-6 py-2 text-xs text-gray-500">No</th>
+                    <th class="px-6 py-2 text-xs text-gray-500">Name</th>
+                    <th class="px-6 py-2 text-xs text-gray-500">Create at</th>
+                    <th class="px-6 py-2 text-xs text-gray-500">Update at</th>
+                    <th class="px-6 py-2 text-xs text-gray-500">Aksi</th>
                 </tr>
             </thead>
             <tbody></tbody>
         </table>
     </div>
-</x-app-layout>
-@push('js')
-    <script type="text/javascript">
-        $(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
 
-            })
+    <script>
+        $(function() {
             $('#tableKategori').DataTable({
                 processing: true,
                 serverSide: true,
@@ -69,9 +62,23 @@
                 ajax: {
                     url: "{{ route('list.kategori') }}",
                 },
+                dom: 'lBfrtip', // Add the Buttons extension to the DataTable
+                buttons: [{
+                        extend: 'excelHtml5',
+                        className: 'bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 ml-2 rounded '
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        className: 'bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        className: 'bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded'
+                    },
+                ],
                 columns: [{
-                        data: 'no',
-                        name: 'no',
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
                         orderable: false,
                         searchable: false
                     },
@@ -95,6 +102,5 @@
                 ]
             });
         });
-        console.log('Before DataTable initialization');
     </script>
-@endpush
+</x-app-layout>
