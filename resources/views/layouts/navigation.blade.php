@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li class="hover:bg-red-400 px-6">
-                <a href="#" class="w-full flex">
+                <a href="{{ route('index.bio') }}" class="w-full flex">
                     <img src="{{ asset('images/user.png') }}" alt="user" width="20"
                         class="max-w-15 my-auto mr-3">
                     Profile

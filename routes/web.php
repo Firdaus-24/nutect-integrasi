@@ -42,6 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/deleteProduk/{id}', [ProdukController::class, 'destroy'])->name('delete.produk');
     Route::get('/update/{id}', [ProdukController::class, 'update'])->name('update.produk');
     Route::post('/editProduk', [ProdukController::class, 'edit'])->name('edit.produk');
+
+    Route::get('/bio', function () {
+        return view('bio.index');
+    })->name('index.bio');
 });
 
 require __DIR__ . '/auth.php';
